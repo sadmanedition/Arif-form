@@ -237,6 +237,8 @@ body {
     /* Base z-index */
     isolation: isolate;
     /* Create new stacking context */
+    margin-bottom: 1rem;
+    /* Compact spacing */
 }
 
 /* Ensure the field with an open dropdown sits on top of others */
@@ -297,6 +299,12 @@ body {
     transition: all var(--transition-normal);
     padding: 0 0.5rem;
     z-index: 5;
+    white-space: nowrap;
+    /* Force single line */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 2.5rem);
+    /* Ensure it doesn't overflow container */
 }
 
 .required-indicator {
@@ -429,18 +437,21 @@ body {
 .radio-text {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 2px;
 }
 
 .radio-text strong {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--color-deep-black);
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .radio-text small {
-    display: none;
-    /* Hide subtitle to save space */
+    display: block;
+    /* Show subtitle */
+    font-size: 0.75rem;
+    color: var(--color-gray-700);
+    font-weight: 400;
 }
 
 /* Error Messages */
@@ -800,7 +811,7 @@ body {
 .form-field.field-has-value .form-label[for="phone"] {
     left: 1rem !important;
     /* Force to 1rem when floating */
-    transform: translateY(-2.9rem) scale(0.85);
+    transform: translateY(-2.4rem) scale(0.85);
 }
 
 /* PREMIUM REDESIGN ADDITIONS */
@@ -1050,5 +1061,20 @@ body {
     to {
         fill: #28A745;
         stroke: #28A745;
+    }
+}
+
+/* Mobile Adjustments for Form */
+@media (max-width: 480px) {
+    .form-label {
+        font-size: 0.8rem;
+        /* Smaller label text on mobile to fit long questions */
+    }
+
+    .radio-options {
+        grid-template-columns: 1fr;
+        /* Stack vertically */
+        gap: 1.5rem;
+        /* More breathing room between stacked cards */
     }
 }

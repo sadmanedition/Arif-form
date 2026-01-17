@@ -388,115 +388,191 @@
     color: white;
 }
 
-/* Responsive */
-/* Responsive */
+/* Responsive Mobile Fixes */
 @media (max-width: 900px) {
+    .admin-body {
+        overflow: auto;
+        /* Enable page scroll */
+        height: auto;
+        /* Allow height to grow */
+    }
+
     .dashboard-layout {
-        padding: 0.5rem;
-        /* Reduced padding */
+        padding: 10px;
         gap: 1rem;
         flex-direction: column;
         height: auto;
+        overflow: visible;
+        /* Let body handle scroll */
     }
 
-    /* Compact Top Navigation */
+    /* 1. Compact Top Bar */
     .sidebar {
         width: 100%;
         flex-direction: row;
-        /* Fixed Typo */
         justify-content: space-between;
         align-items: center;
-        padding: 0.75rem 1rem;
-        margin-bottom: 0.5rem;
-        min-height: auto;
+        padding: 0.5rem 1rem;
+        min-height: 60px;
+        margin-bottom: 1rem;
+        flex-shrink: 0;
     }
 
+    /* Hide large branding on mobile to save space */
     .sidebar-brand {
-        margin: 0;
-    }
-
-    .sidebar-brand h2 {
-        font-size: 1.2rem;
-        /* Smaller brand */
-    }
-
-    .sidebar-brand p {
         display: none;
-        /* Hide subtitle on mobile */
     }
 
     .sidebar-nav {
         flex-direction: row;
         gap: 0.5rem;
-    }
-
-    .nav-item {
-        padding: 0.5rem;
-        font-size: 0.9rem;
-    }
-
-    .nav-item span:not(.nav-icon) {
-        display: none;
-        /* Show only icons on very small screens if needed, or keep short text */
+        align-items: center;
+        flex-grow: 1;
+        justify-content: flex-start;
     }
 
     .sidebar-footer {
         border: none;
         padding: 0;
+        margin-left: auto;
     }
 
-    .logout-btn span {
+    /* Compact Nav Items */
+    .nav-item {
+        box-sizing: border-box;
+        padding: 0 1.2rem;
+        /* Zero vertical padding ensures no offset */
+        height: 40px;
+        /* Precise fixed height */
+        min-height: 40px;
+        font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        /* Strict flex centering */
+        justify-content: center;
+        background: transparent;
+        color: #666;
+        gap: 0.5rem;
+        line-height: 1;
+        /* Match line height to eliminate font leading issues */
+        border-radius: 50px;
+        margin: 0;
+        border: none;
+        vertical-align: middle;
+    }
+
+    .nav-item i,
+    .nav-item span {
+        margin: 0;
+        padding: 0;
+        display: block;
+    }
+
+    .nav-item.active {
+        background: rgba(0, 114, 206, 0.1);
+        color: #0072CE;
+        box-shadow: none;
+        font-weight: 600;
+    }
+
+    .nav-item span {
+        font-size: 0.85rem;
+        position: static;
+        /* No manual offsets */
+        transform: none;
+        /* Just rely on flexbox */
+        display: block;
+    }
+
+    /* Logout Icon Fix */
+    .sidebar-footer .btn-animate {
+        width: 36px !important;
+        height: 36px !important;
+        background: rgba(220, 53, 69, 0.1) !important;
+        /* Light red bg */
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+        transition: all 0.2s;
+    }
+
+    .sidebar-footer .btn-animate span {
         display: none;
-        /* Icon only logout */
+        /* Hide 'Logout' text, icon only */
     }
 
-    .logout-btn::before {
-        content: '🚪';
-        font-size: 1.2rem;
+    .sidebar-footer .btn-animate::after {
+        content: none;
+        /* Remove previous arrow hack */
     }
 
-    /* Stack Header Content */
+    .sidebar-footer .btn-animate svg {
+        display: block;
+        width: 18px;
+        height: 18px;
+        color: #dc3545;
+        /* Red Icon */
+        stroke: #dc3545;
+        opacity: 1;
+        /* Reset any opacity animations */
+        transform: none;
+        position: static;
+    }
+
+    /* 2. Header Layout */
     .content-header {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
+        /* Full width children */
         gap: 1rem;
         margin-bottom: 1.5rem;
+        text-align: left;
     }
 
     .content-header h1 {
         font-size: 1.75rem;
     }
 
+    /* Full Width Action Button - Easy to tap */
     .btn-primary {
         width: 100%;
-        /* Full width button for touch targets */
         justify-content: center;
-    }
-
-    /* Scrollable Table */
-    .data-table-container {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .data-table th,
-    .data-table td {
-        white-space: nowrap;
-        /* Prevent wrapping causing weird heights */
         padding: 1rem;
     }
 
+    /* 3. Stats & Charts */
     .stats-grid {
         grid-template-columns: 1fr;
+        /* Stack vertically */
     }
 
     .charts-row {
         grid-template-columns: 1fr;
     }
 
+    /* 4. Scrollable Table Container */
+    .data-table-container {
+        width: 100%;
+        overflow-x: auto;
+        /* Enable scroll */
+        -webkit-overflow-scrolling: touch;
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .data-table {
+        min-width: 600px;
+        /* Force minimum width to trigger scroll */
+    }
+
     .main-content {
-        overflow: visible;
         padding-right: 0;
+        overflow: visible;
     }
 }
 

@@ -31,19 +31,21 @@
 
             <nav class="sidebar-nav">
                 <button class="nav-item active" onclick="switchTab('overview')" id="nav-overview">
-                    <i class="fas fa-chart-line"></i> Overview
+                    <i class="fas fa-chart-line"></i> <span>Overview</span>
                 </button>
                 <button class="nav-item" onclick="switchTab('leads')" id="nav-leads">
-                    <i class="fas fa-users"></i> Leads
+                    <i class="fas fa-users"></i> <span>Leads</span>
                 </button>
             </nav>
 
-            <div class="sidebar-footer" style="display:flex; justify-content:center; padding: 20px 0;">
+            <div class="sidebar-footer">
                 <button class="btn-animate" id="logoutBtn" onclick="animateLogout()">
                     <span>Logout</span>
-                    <svg viewBox="0 0 24 24">
-                        <path d="M5 12l5 5l10 -10" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                            stroke-linejoin="round"></path>
+                    <!-- Power Icon -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+                        <line x1="12" y1="2" x2="12" y2="12"></line>
                     </svg>
                 </button>
             </div>
