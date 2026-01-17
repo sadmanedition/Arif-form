@@ -389,28 +389,55 @@
 }
 
 /* Responsive */
+/* Responsive */
 @media (max-width: 900px) {
     .dashboard-layout {
-        padding: 1rem;
+        padding: 0.5rem;
+        /* Reduced padding */
         gap: 1rem;
         flex-direction: column;
         height: auto;
     }
 
+    /* Compact Top Navigation */
     .sidebar {
         width: 100%;
-        flexDirection: row;
+        flex-direction: row;
+        /* Fixed Typo */
         justify-content: space-between;
         align-items: center;
-        padding: 1rem;
+        padding: 0.75rem 1rem;
+        margin-bottom: 0.5rem;
+        min-height: auto;
     }
 
     .sidebar-brand {
         margin: 0;
     }
 
+    .sidebar-brand h2 {
+        font-size: 1.2rem;
+        /* Smaller brand */
+    }
+
+    .sidebar-brand p {
+        display: none;
+        /* Hide subtitle on mobile */
+    }
+
     .sidebar-nav {
         flex-direction: row;
+        gap: 0.5rem;
+    }
+
+    .nav-item {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .nav-item span:not(.nav-icon) {
+        display: none;
+        /* Show only icons on very small screens if needed, or keep short text */
     }
 
     .sidebar-footer {
@@ -418,16 +445,58 @@
         padding: 0;
     }
 
-    .nav-item {
-        padding: 0.5rem 1rem;
+    .logout-btn span {
+        display: none;
+        /* Icon only logout */
+    }
+
+    .logout-btn::before {
+        content: '🚪';
+        font-size: 1.2rem;
+    }
+
+    /* Stack Header Content */
+    .content-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .content-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .btn-primary {
+        width: 100%;
+        /* Full width button for touch targets */
+        justify-content: center;
+    }
+
+    /* Scrollable Table */
+    .data-table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .data-table th,
+    .data-table td {
+        white-space: nowrap;
+        /* Prevent wrapping causing weird heights */
+        padding: 1rem;
     }
 
     .stats-grid {
         grid-template-columns: 1fr;
     }
 
+    .charts-row {
+        grid-template-columns: 1fr;
+    }
+
     .main-content {
         overflow: visible;
+        padding-right: 0;
     }
 }
 
