@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Estonian Language Teacher</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="admin-body">
+
+    <div class="background-decoration">
+        <img src="Estonian.png" alt="Background" class="bg-video">
+        <div class="video-overlay" style="background: rgba(0,0,10,0.6);"></div>
+    </div>
+
+    <div class="admin-container">
+        <div class="form-wrapper admin-login-wrapper">
+            <div class="form-header">
+                <h1 class="main-heading">Admin Portal</h1>
+                <p class="sub-heading">Please authenticate to continue</p>
+            </div>
+
+            <form id="loginForm" class="student-intake-form">
+                <div class="form-field">
+                    <input type="password" id="adminPassword" class="form-input" placeholder=" " required
+                        autocomplete="current-password">
+                    <label for="adminPassword" class="form-label">Password</label>
+                </div>
+
+                <div class="error-message" id="loginError"></div>
+
+                <button type="submit" class="btn-animate" id="loginBtn">
+                    <span>Login</span>
+                    <svg viewBox="0 0 24 24">
+                        <path d="M5 12l5 5l10 -10" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>

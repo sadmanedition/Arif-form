@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Estonian Language Teacher</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Optional for icons -->
+</head>
+
+<body class="admin-body">
+
+    <div class="background-decoration">
+        <img src="Estonian.png" alt="Background" class="bg-video">
+        <div class="video-overlay" style="background: rgba(0,0,10,0.85);"></div>
+        <!-- Slightly darker for static image -->
+    </div>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar glass-panel">
+            <div class="sidebar-brand">
+                <h2>Admin</h2>
+                <p>Dashboard</p>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button class="nav-item active" onclick="switchTab('overview')" id="nav-overview">
+                    <i class="fas fa-chart-line"></i> Overview
+                </button>
+                <button class="nav-item" onclick="switchTab('leads')" id="nav-leads">
+                    <i class="fas fa-users"></i> Leads
+                </button>
+            </nav>
+
+            <div class="sidebar-footer" style="display:flex; justify-content:center; padding: 20px 0;">
+                <button class="btn-animate" id="logoutBtn" onclick="animateLogout()">
+                    <span>Logout</span>
+                    <svg viewBox="0 0 24 24">
+                        <path d="M5 12l5 5l10 -10" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- OVERVIEW TAB -->
+            <div id="overview-tab" class="tab-content active">
+                <header class="content-header">
+                    <div>
+                        <h1>Overview</h1>
+                        <p>Welcome back, Admin</p>
+                    </div>
+                    <div class="header-actions">
+                        <a href="https://docs.google.com/spreadsheets/d/1ucPJoSsKXwsl4mEcO85DfIFtVhZaWeUHOrz9wyYaBto/edit?usp=sharing"
+                            target="_blank" class="btn-primary">
+                            <i class="fas fa-table"></i> Open Google Sheet
+                        </a>
+                    </div>
+                </header>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-label">Total Leads</span>
+                        <span class="stat-value">0</span>
+                        <span class="stat-trend">Fetching data...</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Today</span>
+                        <span class="stat-value">0</span>
+                        <span class="stat-trend">New leads</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">High Intent (A1)</span>
+                        <span class="stat-value">0%</span>
+                        <span class="stat-trend">of total leads</span>
+                    </div>
+                </div>
+
+                <div class="charts-row">
+                    <!-- Growth Chart (Left, Larger) -->
+                    <div class="chart-card glass-panel growth-card">
+                        <div class="chart-header">
+                            <h3>Growth Analytics</h3>
+                            <div class="chart-controls">
+                                <select id="timeFilter" onchange="updateChartFilter(this.value)">
+                                    <option value="7">Last 7 Days</option>
+                                    <option value="30">Last 30 Days</option>
+                                    <option value="all">All Time</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="growthChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Level Chart (Right, Smaller) -->
+                    <div class="chart-card glass-panel level-card">
+                        <div class="chart-header">
+                            <h3>Levels</h3>
+                        </div>
+                        <div class="chart-wrapper pie-wrapper">
+                            <canvas id="levelChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEADS TAB -->
+            <div id="leads-tab" class="tab-content">
+                <header class="content-header">
+                    <div>
+                        <h1>All Leads</h1>
+                        <p>Manage your student entries</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn-secondary" onclick="exportCSV()">
+                            <i class="fas fa-download"></i> Export CSV
+                        </button>
+                    </div>
+                </header>
+
+                <div class="data-table-container glass-panel">
+                    <div id="tableLoading" class="table-loading">
+                        Connecting to Google Sheets via n8n...
+                    </div>
+                    <table class="data-table" id="leadsTable" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Level</th>
+                                <th>Email Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leadsBody">
+                            <!-- Rows -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+    <script>
+        // Additional inline script for dashboard logic (will move to admin.js later)
+        if (!localStorage.getItem('adminToken')) {
+            window.location.href = 'admin.html';
+        }
+
+        function logout() {
+            localStorage.removeItem('adminToken');
+            window.location.href = 'admin.html';
+        }
+
+        // Mock Data removed - real data loading implemented in admin.js
+    </script>
+</body>
+
+</html>

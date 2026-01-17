@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Your Estonian Language Journey | Personalized Lessons</title>
+    <meta name="description"
+        content="Begin your journey to fluency with an experienced Estonian language teacher. Personalized online lessons for A1, A2, B1, and B2 levels. Join now!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Background decorative elements -->
+    <div class="background-decoration">
+        <img src="Estonian.png" alt="Background" class="bg-video">
+        <div class="video-overlay" style="background: rgba(0,0,10,0.6);"></div>
+    </div>
+
+    <!-- Main container -->
+    <div class="page-container">
+        <main class="form-wrapper">
+            <!-- Header Section -->
+            <header class="form-header">
+                <h1 class="main-heading">Start Your Estonian Language Journey</h1>
+                <p class="sub-heading">Personalized online Estonian lessons for every level</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar"></div>
+                </div>
+            </header>
+
+            <!-- Form Section -->
+            <div id="formContainer">
+                <form class="student-intake-form" id="intakeForm" novalidate>
+                    <!-- Full Name -->
+                    <div class="form-field">
+                        <input type="text" id="fullName" name="fullName" class="form-input" placeholder="" required
+                            autocomplete="name" aria-required="true">
+                        <label for="fullName" class="form-label">
+                            Full Name <span class="required-indicator">*</span>
+                        </label>
+                        <span class="error-message" id="fullNameError"></span>
+                    </div>
+
+                    <!-- Email Address -->
+                    <div class="form-field">
+                        <input type="email" id="email" name="email" class="form-input" placeholder="" required
+                            autocomplete="email" aria-required="true">
+                        <label for="email" class="form-label">
+                            Email Address <span class="required-indicator">*</span>
+                        </label>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div class="form-field">
+                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="" autocomplete="tel">
+                        <label for="phone" class="form-label">
+                            Phone Number <span class="optional-indicator">(optional)</span>
+                        </label>
+                        <span class="error-message" id="phoneError"></span>
+                    </div>
+
+                    <!-- Current Language Level -->
+                    <div class="form-field radio-group">
+                        <fieldset>
+                            <legend class="radio-label">
+                                Current Estonian Language Level <span class="required-indicator">*</span>
+                            </legend>
+                            <div class="radio-options">
+                                <div class="radio-option">
+                                    <input type="radio" id="levelA1" name="languageLevel" value="A1" required>
+                                    <label for="levelA1" class="radio-button-label">
+                                        <span class="radio-custom"></span>
+                                        <span class="radio-text">
+                                            <strong>A1</strong>
+                                            <small>Beginner</small>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="levelA2" name="languageLevel" value="A2">
+                                    <label for="levelA2" class="radio-button-label">
+                                        <span class="radio-custom"></span>
+                                        <span class="radio-text">
+                                            <strong>A2</strong>
+                                            <small>Elementary</small>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="levelB1" name="languageLevel" value="B1">
+                                    <label for="levelB1" class="radio-button-label">
+                                        <span class="radio-custom"></span>
+                                        <span class="radio-text">
+                                            <strong>B1</strong>
+                                            <small>Intermediate</small>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <span class="error-message" id="languageLevelError"></span>
+                    </div>
+
+                    <!-- Future Goal -->
+                    <div class="form-field">
+                        <textarea id="futureGoal" name="futureGoal" class="form-input form-textarea" rows="4"
+                            placeholder="" required aria-required="true"></textarea>
+                        <label for="futureGoal" class="form-label">
+                            What is your goal with learning Estonian? <span class="required-indicator">*</span>
+                        </label>
+                        <span class="error-message" id="futureGoalError"></span>
+                    </div>
+
+                    <!-- Estonian Knowledge -->
+                    <div class="form-field">
+                        <textarea id="estonianKnowledge" name="estonianKnowledge" class="form-input form-textarea"
+                            rows="4" placeholder="" required aria-required="true"></textarea>
+                        <label for="estonianKnowledge" class="form-label">
+                            How well do you know Estonian? <span class="required-indicator">*</span>
+                        </label>
+                        <span class="error-message" id="estonianKnowledgeError"></span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-button" id="submitBtn">
+                        <span class="button-text">Submit & Get Started</span>
+                        <span class="button-loading">
+                            <span class="loading-spinner"></span>
+                            Submitting...
+                        </span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Success Message (Initially Hidden) -->
+            <div class="success-message-container" id="successMessage" aria-hidden="true">
+                <div class="success-checkmark">
+                    <svg viewBox="0 0 52 52" class="checkmark-svg">
+                        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
+                        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                    </svg>
+                </div>
+                <h2 class="success-heading">Submission Successful!</h2>
+                <p class="success-text">Thank you for your interest. We will get back to you soon.</p>
+                <div class="success-decoration"></div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="page-footer">
+            <p>© 2026 Estonian Language Teacher</p>
+        </footer>
+    </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
